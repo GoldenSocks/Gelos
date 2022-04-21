@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32210.238
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gelos.API", "Gelos.API\Gelos.API.csproj", "{E6D5F519-3BC7-4B0C-AABC-99D3A3F60E2F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectName.Domain", "ProjectName.Domain\ProjectName.Domain.csproj", "{23EA519B-4115-4D42-AF4B-BF8170256506}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectName.BusinessLogic", "ProjectName.BusinessLogic\ProjectName.BusinessLogic.csproj", "{09BCF9D1-F1A2-422A-814B-B602F0C64176}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectName.DataAccess.Postgres", "ProjectName.DataAccess.Postgres\ProjectName.DataAccess.Postgres.csproj", "{16970F9F-D8C9-4F9F-8DED-EEC19E81EC84}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gelos.UnitTests", "Gelos.UnitTests\Gelos.UnitTests.csproj", "{6D5A6637-968A-4566-A460-9654BC5A9004}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gelos.IntegrationTests", "Gelos.IntegrationTests\Gelos.IntegrationTests.csproj", "{B68B5B84-9BE0-4EEC-8075-161284BADD08}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E6D5F519-3BC7-4B0C-AABC-99D3A3F60E2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6D5F519-3BC7-4B0C-AABC-99D3A3F60E2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6D5F519-3BC7-4B0C-AABC-99D3A3F60E2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6D5F519-3BC7-4B0C-AABC-99D3A3F60E2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23EA519B-4115-4D42-AF4B-BF8170256506}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23EA519B-4115-4D42-AF4B-BF8170256506}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23EA519B-4115-4D42-AF4B-BF8170256506}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23EA519B-4115-4D42-AF4B-BF8170256506}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09BCF9D1-F1A2-422A-814B-B602F0C64176}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09BCF9D1-F1A2-422A-814B-B602F0C64176}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09BCF9D1-F1A2-422A-814B-B602F0C64176}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09BCF9D1-F1A2-422A-814B-B602F0C64176}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16970F9F-D8C9-4F9F-8DED-EEC19E81EC84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16970F9F-D8C9-4F9F-8DED-EEC19E81EC84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16970F9F-D8C9-4F9F-8DED-EEC19E81EC84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16970F9F-D8C9-4F9F-8DED-EEC19E81EC84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D5A6637-968A-4566-A460-9654BC5A9004}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D5A6637-968A-4566-A460-9654BC5A9004}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D5A6637-968A-4566-A460-9654BC5A9004}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D5A6637-968A-4566-A460-9654BC5A9004}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B68B5B84-9BE0-4EEC-8075-161284BADD08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B68B5B84-9BE0-4EEC-8075-161284BADD08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B68B5B84-9BE0-4EEC-8075-161284BADD08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B68B5B84-9BE0-4EEC-8075-161284BADD08}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DCF00297-9DEE-4732-BB57-0E3D309A12B9}
+	EndGlobalSection
+EndGlobal
