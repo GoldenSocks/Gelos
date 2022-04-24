@@ -1,6 +1,6 @@
 using Xunit;
 
-namespace Gelos.UnitTests
+namespace Gelos.IntegrationTests
 {
     public class UnitTest1
     {
