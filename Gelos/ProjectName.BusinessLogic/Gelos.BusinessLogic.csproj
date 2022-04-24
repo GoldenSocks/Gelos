@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ProjectName.Domain\Gelos.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

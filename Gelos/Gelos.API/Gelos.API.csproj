@@ -10,4 +10,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ProjectName.BusinessLogic\Gelos.BusinessLogic.csproj" />
+    <ProjectReference Include="..\ProjectName.DataAccess.Postgres\Gelos.DataAccess.Postgres.csproj" />
+  </ItemGroup>
+
 </Project>
