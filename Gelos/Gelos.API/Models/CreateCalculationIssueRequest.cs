@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
-using Microsoft.AspNetCore.Mvc;
 
-namespace Gelos.API.Controllers
+
+namespace Gelos.API.Models
 {
     public class CreateCalculationIssueRequest
     {

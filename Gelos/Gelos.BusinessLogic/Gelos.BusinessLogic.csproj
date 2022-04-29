@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Gelos.Domain\Gelos.Domain.csproj" />
-    <ProjectReference Include="..\ProjectName.Domain\Gelos.Domain.csproj" />
   </ItemGroup>
 
 </Project>

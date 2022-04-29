@@ -14,8 +14,6 @@
     <ProjectReference Include="..\Gelos.BusinessLogic\Gelos.BusinessLogic.csproj" />
     <ProjectReference Include="..\Gelos.DataAccess.Json\Gelos.DataAccess.Json.csproj" />
     <ProjectReference Include="..\Gelos.DataAccess.Postgres\Gelos.DataAccess.Postgres.csproj" />
-    <ProjectReference Include="..\ProjectName.BusinessLogic\Gelos.BusinessLogic.csproj" />
-    <ProjectReference Include="..\ProjectName.DataAccess.Postgres\Gelos.DataAccess.Postgres.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ProjectName.BusinessLogic\Gelos.BusinessLogic.csproj" />
+    <ProjectReference Include="..\Gelos.BusinessLogic\Gelos.BusinessLogic.csproj" />
   </ItemGroup>
 
 </Project>

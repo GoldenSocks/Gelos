@@ -1,32 +1,26 @@
 ﻿
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Gelos.API.Models;
+using Gelos.Domain.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Gelos.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class CalculationIssuesController : ControllerBase
+    public class CalculationIssuesController : Controller
     {
+        private readonly ICalculationIssuesService _calculationIssuesService;
+
+        public CalculationIssuesController(ICalculationIssuesService calculationIssuesService)
+        {
+            _calculationIssuesService = calculationIssuesService;
+        }
+
         [HttpPost]
         public IActionResult Create(CreateCalculationIssueRequest request)
         {
-            var (issue, error) = Issue.Create(request.Name, request.Description);
-
-            if (!string.IsNullOrEmpty(error) || issue == null)
-            {
-                return BadRequest(new ProblemDetails() { Detail = error });
-            }
-
-            var repository = new List<Issue>();
-            var issueId = repository.Count + 1;
-            repository.Add(issue with { Id = issueId });
-
-            return Ok(issue);
+            var response = _calculationIssuesService.Create(request.Name, request.Description);
+            return Ok(response);
         }
 
         [HttpGet]

@@ -1,15 +1,16 @@
-using System.Threading.Tasks;
+using Gelos.Domain.Interfaces;
+using Gelos.Domain.Models;
 
 namespace Gelos.Domain.Interfaces
 {
-    public interface ICalculationIssuesRepository<T> where T: class
+    public interface ICalculationIssuesRepository<T> where T : class
     {
-         T Get(int id);
+        Issue Get(int id);
 
-         void Add(T issue);
+        void Add(Issue obj);
 
-         ICollection<T> GetAll();
+        void Update(Issue obj);
 
-         
+        void Delete(int id);
     }
 }
