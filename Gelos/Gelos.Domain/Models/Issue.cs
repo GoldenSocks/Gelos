@@ -1,5 +1,5 @@
 ﻿
-namespace Gelos.Domain.Entities
+namespace Gelos.Domain.Models
 {
     public record Issue
     {
@@ -8,6 +8,7 @@ namespace Gelos.Domain.Entities
             Id = id;
             Name = name;
             Description = description;
+            CreateDate = DateTime.Now;
         }
 
         public int Id { get; init; }
@@ -15,6 +16,14 @@ namespace Gelos.Domain.Entities
         public string Name { get; }
 
         public string? Description { get; }
+
+        public DateTime CreateDate { get; set; }
+
+        public DateTime EndDate { get; set; }
+
+        public Employee Provider { get; set; }
+
+        public Employee Executor { get; set; }
 
         public static (Issue? Result, string Error) Create(string name, string? description)
         {
@@ -29,14 +38,6 @@ namespace Gelos.Domain.Entities
 
             return (new Issue(0, name, description), string.Empty);
         }
-
-        // public DateTime CreateDate { get; set; }
-
-        // public DateTime EndDate { get; set; }
-
-        // public Employee Provider { get; set; }
-
-        // public Employee Executor { get; set; }
 
         // public List<СalcFile>? Files { get; set; }
     }

@@ -1,5 +1,5 @@
 ﻿
-namespace Gelos.Domain.Entities
+namespace Gelos.Domain.Models
 {
     public class Employee
     {
