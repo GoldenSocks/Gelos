@@ -17,10 +17,11 @@ jobs:
       uses: actions/setup-dotnet@v2
       with:
         dotnet-version: 6.0.x
+    - name: Change Directory
       run: cd Gelos
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore Gelos/Gelos.sln
     - name: Build
-      run: dotnet build --no-restore
+      run: dotnet build Gelos/Gelos.sln --no-restore 
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test Gelos/Gelos.sln --no-build --verbosity normal
