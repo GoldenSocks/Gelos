@@ -12,7 +12,7 @@ builder.Services.AddControllers();
 
 builder.Services.AddTransient<ICalculationIssuesRepository<Issue>, CalculationIssuesRepository>();
 builder.Services.AddTransient<ICalculationIssuesService, CalculationIssuesService>();
-builder.Services.AddTransient<JsonContext<Issue>>();
+builder.Services.AddTransient<JsonContext>();
 
 
 builder.Services.AddSingleton(x => new JsonSettings("..\\Gelos.DataAccess.Json\\Data\\data.json"));

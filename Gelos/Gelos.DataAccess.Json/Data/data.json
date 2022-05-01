@@ -1,6 +1,1 @@
-{"Id":3,"Name":"string","Description":"string","CreateDate":"2022-04-29T16:57:36.5557771+05:00","EndDate":"0001-01-01T00:00:00","Provider":null,"Executor":null}
-{"Id":1,"Name":"string","Description":"string","CreateDate":"2022-04-29T16:58:51.8937608+05:00","EndDate":"0001-01-01T00:00:00","Provider":null,"Executor":null}
-{"Id":1,"Name":"string","Description":"string","CreateDate":"2022-04-29T17:04:58.7779043+05:00","EndDate":"0001-01-01T00:00:00","Provider":null,"Executor":null}
-{"Id":4,"Name":"Task1","Description":"string","CreateDate":"2022-04-29T17:18:05.3990992+05:00","EndDate":"0001-01-01T00:00:00","Provider":null,"Executor":null}
-{"Id":5,"Name":"Task2","Description":"string","CreateDate":"2022-04-29T17:18:09.1787415+05:00","EndDate":"0001-01-01T00:00:00","Provider":null,"Executor":null}
-{"Id":6,"Name":"Task3","Description":"string","CreateDate":"2022-04-29T17:18:12.9876729+05:00","EndDate":"0001-01-01T00:00:00","Provider":null,"Executor":null}
+{"Id":1,"Name":"1","Description":"1","CreateDate":"2022-05-01T12:12:14.8009484+05:00","EndDate":"0001-01-01T00:00:00","Provider":{"Id":null,"Name":null},"Executor":{"Id":null,"Name":null}}

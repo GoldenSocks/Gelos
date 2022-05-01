@@ -1,11 +1,10 @@
-﻿using Newtonsoft.Json;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Formatters.Binary;
+﻿using Gelos.DataAccess.Json.Entityes;
+using Newtonsoft.Json;
 
 
 namespace Gelos.DataAccess.Json
 {
-    public class JsonContext<T>
+    public class JsonContext
     {
         private readonly string _jsonDataPath;
 
@@ -15,8 +14,8 @@ namespace Gelos.DataAccess.Json
         }
 
 
-        public void Serialize(T objToSerialise)
-        {
+        public void Serialize(IssueDto objToSerialise)
+        { 
             using (StreamWriter file = File.AppendText(_jsonDataPath))
             {
                 JsonSerializer serializer = new JsonSerializer();
@@ -25,17 +24,29 @@ namespace Gelos.DataAccess.Json
             }
         }
 
-        public List<T> Deserialize<T>()
+        public List<IssueDto> Deserialize()
         {
             var file = File.ReadAllLines(_jsonDataPath);
-            var issues = new List<T>();
+            var issues = new List<IssueDto>();
 
             foreach (var issue in file)
             {
-                issues.Add(JsonConvert.DeserializeObject<T>(issue));
+                issues.Add(JsonConvert.DeserializeObject<IssueDto>(issue));
             }
 
             return issues;
+        }
+
+        public void DeleteJson()
+        {
+            File.Delete(_jsonDataPath);
+        }
+
+        public void UpdateJson()
+        {
+            using (FileStream fstream = new FileStream(_jsonDataPath, FileMode.OpenOrCreate))
+                Console.WriteLine("Jsonn пересоздан");
+
         }
     }
 }

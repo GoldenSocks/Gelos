@@ -5,11 +5,13 @@ namespace Gelos.Domain.Interfaces
 {
     public interface ICalculationIssuesRepository<T> where T : class
     {
-        Issue Get(int id);
+        T Get(int id);
 
-        void Add(Issue obj);
+        List<T> GetAll();
 
-        void Update(Issue obj);
+        void Add(T obj);
+
+        void Update(T obj);
 
         void Delete(int id);
     }
