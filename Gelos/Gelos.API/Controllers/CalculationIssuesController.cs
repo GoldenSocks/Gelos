@@ -1,7 +1,7 @@
-﻿
-using Gelos.API.Models;
+﻿using Gelos.API.Models;
 using Gelos.Domain.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+
 
 namespace Gelos.API.Controllers
 {
@@ -24,15 +24,17 @@ namespace Gelos.API.Controllers
         }
 
         [HttpGet]
-        public IActionResult Get()
+        public IActionResult Get([FromQuery] GetCalculationIssueRequest request)
         {
-            return Ok();
+            var response = _calculationIssuesService.Get(request.Id);
+            return Ok(response);
         }
 
         [HttpDelete]
-        public IActionResult Delete()
+        public IActionResult Delete(DeleteCalculationIssueRequest request)
         {
-            return Ok();
+            var response = _calculationIssuesService.Delete(request.Id);
+            return Ok(response);
         }
 
         [HttpPut]
