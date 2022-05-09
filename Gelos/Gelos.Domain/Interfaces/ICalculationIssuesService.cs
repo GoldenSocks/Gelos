@@ -7,7 +7,7 @@ namespace Gelos.Domain.Interfaces
     {
         public string Create(string name, string? description);
 
-        public List<Issue> GetAll();
+        public List<Issue> Get();
 
         public Issue Get(int id);
 

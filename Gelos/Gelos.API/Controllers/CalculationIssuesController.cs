@@ -24,21 +24,28 @@ namespace Gelos.API.Controllers
         }
 
         [HttpGet]
-        public IActionResult Get([FromQuery] GetCalculationIssueRequest request)
+        public IActionResult Get()
         {
-            var response = _calculationIssuesService.Get(request.Id);
+            var response = _calculationIssuesService.Get();
             return Ok(response);
         }
 
-        [HttpDelete]
-        public IActionResult Delete(DeleteCalculationIssueRequest request)
+        [HttpGet("{calculationIssueId:int}")]
+        public IActionResult Get(int calculationIssueId)
         {
-            var response = _calculationIssuesService.Delete(request.Id);
+            var response = _calculationIssuesService.Get(calculationIssueId);
             return Ok(response);
         }
 
-        [HttpPut]
-        public IActionResult Update()
+        [HttpDelete("{calculationIssueId:int}")]
+        public IActionResult Delete(int calculationIssueId)
+        {
+            var response = _calculationIssuesService.Delete(calculationIssueId);
+            return Ok(response);
+        }
+
+        [HttpPut("{calculationIssueId:int}")]
+        public IActionResult Update(int calculationIssueId)
         {
             return Ok();
         }
