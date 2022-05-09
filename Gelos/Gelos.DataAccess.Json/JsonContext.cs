@@ -1,4 +1,4 @@
-﻿using Gelos.DataAccess.Json.Entityes;
+﻿using Gelos.DataAccess.Json.Entities;
 using Newtonsoft.Json;
 
 
@@ -7,46 +7,89 @@ namespace Gelos.DataAccess.Json
     public class JsonContext
     {
         private readonly string _jsonDataPath;
+        private readonly string _extention = ".json";
 
         public JsonContext(JsonSettings jsonSettings)
         {
             _jsonDataPath = jsonSettings.JsonDataPath;
         }
 
+        public void Add(IssueDto issue)
+        {
+            var filePath = GetFilePath(issue.Id);
 
-        public void Serialize(IssueDto objToSerialise)
-        { 
-            using (StreamWriter file = File.AppendText(_jsonDataPath))
+            using StreamWriter file = File.AppendText(filePath);
+            Serialise(issue, file);
+        }
+
+        public IssueDto[] Get()
+        {
+            var files = Directory.GetFiles(_jsonDataPath);
+            var issues = new List<IssueDto>();
+
+            if (files.Length != 0)
             {
-                JsonSerializer serializer = new JsonSerializer();
-                serializer.Serialize(file, objToSerialise);
-                file.Write(Environment.NewLine);
+                foreach (var file in files)
+                {
+                    var data = File.ReadAllLines(file);
+                    issues.AddRange(Deserialize(data));
+                }
+            }
+            return issues.ToArray();
+        }
+
+        public void Delete(int id)
+        {
+            var filePath = GetFilePath(id);
+            if (IsExists(id))
+            {
+                File.Delete(filePath);
             }
         }
 
-        public List<IssueDto> Deserialize()
+        public void Update(IssueDto issue)
         {
-            var file = File.ReadAllLines(_jsonDataPath);
-            var issues = new List<IssueDto>();
+            var filePath = GetFilePath(issue.Id);
+            if (IsExists(issue.Id))
+            {
+                Delete(issue.Id);
+                Add(issue);
+            }
+        }
 
-            foreach (var issue in file)
+        private bool IsExists(int id)
+        {
+            var issues = Get();
+            if (issues != null)
+            {
+                if (issues.FirstOrDefault(issue => issue.Id == id) != null)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private static List<IssueDto> Deserialize(string[] data)
+        {
+            var issues = new List<IssueDto>();
+            foreach (var issue in data)
             {
                 issues.Add(JsonConvert.DeserializeObject<IssueDto>(issue));
             }
-
             return issues;
         }
 
-        public void DeleteJson()
+        private static void Serialise(IssueDto issue, StreamWriter file)
         {
-            File.Delete(_jsonDataPath);
+            JsonSerializer serializer = new();
+            serializer.Serialize(file, issue);
+            file.Write(Environment.NewLine);
         }
 
-        public void UpdateJson()
+        private string GetFilePath(int id)
         {
-            using (FileStream fstream = new FileStream(_jsonDataPath, FileMode.OpenOrCreate))
-                Console.WriteLine("Jsonn пересоздан");
-
+            return Path.Combine(_jsonDataPath, id + _extention);
         }
     }
 }

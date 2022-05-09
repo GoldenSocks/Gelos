@@ -1,17 +1,17 @@
-using Gelos.Domain.Interfaces;
 using Gelos.Domain.Models;
+
 
 namespace Gelos.Domain.Interfaces
 {
-    public interface ICalculationIssuesRepository<T> where T : class
+    public interface ICalculationIssuesRepository
     {
-        T Get(int id);
+        Issue Get(int id);
 
-        List<T> GetAll();
+        List<Issue> Get();
 
-        void Add(T obj);
+        void Add(Issue issue);
 
-        void Update(T obj);
+        void Update(Issue issue);
 
         void Delete(int id);
     }

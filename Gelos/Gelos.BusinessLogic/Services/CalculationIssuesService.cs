@@ -1,13 +1,14 @@
 ﻿using Gelos.Domain.Interfaces;
 using Gelos.Domain.Models;
 
+
 namespace Gelos.BusinessLogic.Services
 {
     public class CalculationIssuesService : ICalculationIssuesService
     {
-        private readonly ICalculationIssuesRepository<Issue> _calculationIssuesRepository;
+        private readonly ICalculationIssuesRepository _calculationIssuesRepository;
 
-        public CalculationIssuesService(ICalculationIssuesRepository<Issue> calculationIssuesRepository)
+        public CalculationIssuesService(ICalculationIssuesRepository calculationIssuesRepository)
         {
             _calculationIssuesRepository = calculationIssuesRepository;
         }
@@ -21,16 +22,13 @@ namespace Gelos.BusinessLogic.Services
                 return error;
             }
             
-            // Легко могут быть повторяющиеся Id
-            var issueId = _calculationIssuesRepository.GetAll().Count + 1;
-
-            _calculationIssuesRepository.Add(issue with { Id = issueId });
+            _calculationIssuesRepository.Add(issue);
             return "Success Create";
         }
 
-        public List<Issue> GetAll()
+        public List<Issue> Get()
         {
-            return _calculationIssuesRepository.GetAll();
+            return _calculationIssuesRepository.Get();
         }
 
         public Issue Get(int id)

@@ -1,11 +1,11 @@
 ﻿
-namespace Gelos.DataAccess.Json.Entityes
+namespace Gelos.DataAccess.Json.Entities
 {
     public class IssueDto
     {
         public int Id { get; init; }
 
-        public string Name { get; set; }
+        public string Name { get; set; } = String.Empty;
 
         public string? Description { get; set; }
 

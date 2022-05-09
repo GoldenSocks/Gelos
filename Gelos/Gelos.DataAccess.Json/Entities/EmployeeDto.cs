@@ -1,9 +1,9 @@
 ﻿
-namespace Gelos.DataAccess.Json.Entityes
+namespace Gelos.DataAccess.Json.Entities
 {
     public class EmployeeDto
     {
-        public int? Id { get; set; }
+        public int Id { get; set; }
         public string? Name { get; set; }
     }
 }
