@@ -49,7 +49,6 @@ namespace Gelos.DataAccess.Json
 
         public void Update(IssueDto issue)
         {
-            var filePath = GetFilePath(issue.Id);
             if (IsExists(issue.Id))
             {
                 Delete(issue.Id);
