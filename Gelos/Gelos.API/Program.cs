@@ -10,9 +10,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 
 
-builder.Services.AddTransient<ICalculationIssuesRepository, CalculationIssuesRepository>();
-builder.Services.AddTransient<ICalculationIssuesService, CalculationIssuesService>();
-builder.Services.AddTransient<JsonContext>();
+builder.Services.AddScoped<ICalculationIssuesRepository, CalculationIssuesRepository>();
+builder.Services.AddScoped<ICalculationIssuesService, CalculationIssuesService>();
+builder.Services.AddSingleton<JsonContext>();
 
 
 builder.Services.AddSingleton(x => new JsonSettings("..\\Gelos.DataAccess.Json\\Data\\"));

@@ -85,5 +85,17 @@ namespace Gelos.UnitTests
             Assert.NotEmpty(error);
             Assert.Null(issue);
         }
+
+        [Fact]
+        public void Get_ShouldReturnIssue()
+        {
+            // arrange
+            
+
+            // act
+
+            // assert
+
+        }
     }
 }

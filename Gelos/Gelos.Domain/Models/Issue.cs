@@ -35,7 +35,7 @@ namespace Gelos.Domain.Models
             }
             if(name.Length > MAX_NAME_LENGHT)
             {
-                return (null, "Name should be less then 500 simbols");
+                return (null, $"Name should be less then {MAX_NAME_LENGHT} symbols");
             }
 
             return (new Issue(id, name, description, createDate), string.Empty);
