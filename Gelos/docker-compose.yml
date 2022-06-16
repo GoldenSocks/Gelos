@@ -10,6 +10,8 @@ services:
       - dbdata:/var/lib/postgresql/data
     environment:
       POSTGRES_PASSWORD: pwd
+    ports:
+      - 5432:5432
 
   api:
     container_name: api
