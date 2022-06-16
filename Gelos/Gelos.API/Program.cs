@@ -1,8 +1,9 @@
 using Gelos.BusinessLogic.Services;
 using Gelos.DataAccess.Json;
 using Gelos.DataAccess.Json.Repository;
+using Gelos.DataAccess.Postgres;
 using Gelos.Domain.Interfaces;
-
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +17,11 @@ builder.Services.AddSingleton<JsonContext>();
 
 
 builder.Services.AddSingleton(x => new JsonSettings("..\\Gelos.DataAccess.Json\\Data\\"));
+
+builder.Services.AddDbContext<GelosContext>(options => 
+{
+    options.UseNpgsql(builder.Configuration.GetConnectionString(nameof(GelosContext)));
+});
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
