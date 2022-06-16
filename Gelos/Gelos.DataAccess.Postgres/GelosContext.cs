@@ -7,6 +7,8 @@ namespace Gelos.DataAccess.Postgres
     {
         public GelosContext(DbContextOptions<GelosContext> options) : base(options)
         {
+            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+            AppContext.SetSwitch("Npgsql.DisableDateTimeInfinityConversions", true);
         }
 
         public DbSet<EmployeeDto> Employees { get; set; }

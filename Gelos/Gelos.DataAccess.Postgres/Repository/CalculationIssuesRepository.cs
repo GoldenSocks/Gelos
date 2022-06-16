@@ -1,11 +1,7 @@
 ﻿using Gelos.DataAccess.Postgres.Entities;
 using Gelos.Domain.Interfaces;
 using Gelos.Domain.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Gelos.DataAccess.Postgres.Repository
 {
@@ -25,43 +21,73 @@ namespace Gelos.DataAccess.Postgres.Repository
                 Name = issue.Name,
                 Description = issue.Description,
                 CreateDate = issue.CreateDate,
-                EndDate = issue.EndDate,
-                Executor = new EmployeeDto { Id = issue.Executor?.Id ?? -1, Name = issue.Executor?.Name },
-                Provider = new EmployeeDto { Id = issue.Executor?.Id ?? -1, Name = issue.Provider?.Name }
+                EndDate = issue.EndDate
             };
 
             _context.Add(issueDto);
             _context.SaveChanges();
         }
 
-        public void Delete(int id)
+        public bool Delete(int id)
         {
             var issue = _context.Issues.FirstOrDefault(x => x.Id == id);
             if(issue != null)
             {
                 _context.Remove(issue);
+                _context.SaveChanges();
+                return true;
             }
+            return false;
         }
 
-        public Issue Get(int id)
+        public (Issue?, bool) Get(int id)
         {
             var issueDto = _context.Issues.FirstOrDefault(issue => issue.Id == id);
+            
             if( issueDto != null)
             {
                 var (issue, _) = Issue.Create(issueDto.Name, issueDto.Description, issueDto.CreateDate, issueDto.Id);
-                if (issue != null) return issue;
+                return (issue, true);
             }
-            return null;
+            return (null, false);
         }
 
         public List<Issue> Get()
         {
-            throw new NotImplementedException();
+            var issuesDto = _context.Issues.ToList();
+
+            var issues = new List<Issue>();
+
+            foreach (var issueDto in issuesDto)
+            {
+                var (issue, _) = Issue.Create(issueDto.Name, issueDto.Description, issueDto.CreateDate, issueDto.Id);
+                if(issue != null)
+                {
+                    issues.Add(issue);
+                }
+            }
+            return issues;
         }
 
-        public void Update(Issue issue)
+        public bool Update(int id)
         {
-            throw new NotImplementedException();
+            var (issue, IsSuccess) = Get(id);
+
+            if (IsSuccess)
+            {
+                var issueDto = new IssueDto
+                {
+                    Name = issue.Name,
+                    Description = issue.Description,
+                    CreateDate = issue.CreateDate,
+                    EndDate = issue.EndDate
+                };
+
+                _context.Update(issueDto);
+                _context.SaveChanges();
+            }
+
+            return IsSuccess;
         }
     }
 }

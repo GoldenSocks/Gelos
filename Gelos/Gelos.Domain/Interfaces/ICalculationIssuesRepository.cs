@@ -5,14 +5,14 @@ namespace Gelos.Domain.Interfaces
 {
     public interface ICalculationIssuesRepository
     {
-        Issue Get(int id);
+        (Issue?, bool) Get(int id);
 
         List<Issue> Get();
 
         void Add(Issue issue);
 
-        void Update(Issue issue);
+        bool Update(int id);
 
-        void Delete(int id);
+        bool Delete(int id);
     }
 }

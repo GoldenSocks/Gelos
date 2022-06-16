@@ -20,7 +20,7 @@ namespace Gelos.API.Controllers
         public IActionResult Create(CreateCalculationIssueRequest request)
         {
             var response = _calculationIssuesService.Create(request.Name, request.Description);
-            return Ok(response);
+            return Ok(response.Item2);
         }
 
         [HttpGet]
@@ -47,7 +47,8 @@ namespace Gelos.API.Controllers
         [HttpPut("{calculationIssueId:int}")]
         public IActionResult Update(int calculationIssueId)
         {
-            return Ok();
+            var response = _calculationIssuesService.Update(calculationIssueId);
+            return Ok(response);
         }
     }
 }
