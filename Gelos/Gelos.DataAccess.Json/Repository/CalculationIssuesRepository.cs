@@ -32,14 +32,15 @@ namespace Gelos.DataAccess.Json.Repository
             _context.Add(issueDto);
         }
 
-        public void Delete(int id)
+        public bool Delete(int id)
         {
             _context.Delete(id);
+            return true;
         }
 
-        public Issue Get(int id)
+        public (Issue?, bool) Get(int id)
         {
-            return Get().FirstOrDefault(x => x.Id == id);
+            return (Get().FirstOrDefault(x => x.Id == id), true);
         }
 
         public List<Issue> Get()
@@ -55,9 +56,9 @@ namespace Gelos.DataAccess.Json.Repository
             return result;
         }
 
-        public void Update(Issue issue)
+        public bool Update(int id)
         {
-
+            throw new NotImplementedException();
         }
 
         private int SetId()

@@ -13,17 +13,17 @@ namespace Gelos.BusinessLogic.Services
             _calculationIssuesRepository = calculationIssuesRepository;
         }
 
-        public string Create(string name, string? description)
+        public (bool, string) Create(string name, string? description)
         {
             var (issue, error) = Issue.Create(name, description, DateTime.Now);
 
             if (!string.IsNullOrEmpty(error) || issue == null)
             {
-                return error;
+                return (false, error);
             }
             
             _calculationIssuesRepository.Add(issue);
-            return "Success Create";
+            return (true, String.Empty);
         }
 
         public List<Issue> Get()
@@ -31,15 +31,21 @@ namespace Gelos.BusinessLogic.Services
             return _calculationIssuesRepository.Get();
         }
 
-        public Issue Get(int id)
+        public Issue? Get(int id)
         {
-            return _calculationIssuesRepository.Get(id);
+            var (issue, IsSuccess) = _calculationIssuesRepository.Get(id);
+                       
+            return  IsSuccess ? issue : null;
         }
 
-        public string Delete(int id)
+        public bool Delete(int id)
         {
-            _calculationIssuesRepository.Delete(id);
-            return "Success Delete";
+            return _calculationIssuesRepository.Delete(id);
+        }
+
+        public bool Update(int id)
+        {
+            return _calculationIssuesRepository.Update(id);
         }
     }
 }
