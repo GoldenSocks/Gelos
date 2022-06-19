@@ -24,9 +24,7 @@ namespace Gelos.DataAccess.Json.Repository
                 Name = issue.Name,
                 Description = issue.Description,
                 CreateDate = issue.CreateDate,
-                EndDate = issue.EndDate,
-                Executor = new EmployeeDto { Id = issue.Executor?.Id ?? -1, Name = issue.Executor?.Name },
-                Provider = new EmployeeDto { Id = issue.Executor?.Id ?? -1, Name = issue.Provider?.Name}
+                EndDate = issue.EndDate
             };
 
             _context.Add(issueDto);
