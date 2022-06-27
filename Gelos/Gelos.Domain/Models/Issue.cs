@@ -3,7 +3,7 @@ namespace Gelos.Domain.Models
 {
     public record Issue
     {
-        public const int MAX_NAME_LENGHT = 500;
+        public const int MAX_NAME_LENGTH = 500;
 
         private Issue(int id, string name, string? description, DateTime createDate)
         {
@@ -33,9 +33,9 @@ namespace Gelos.Domain.Models
             {
                 return (null, "Name must have value");
             }
-            if(name.Length > MAX_NAME_LENGHT)
+            if(name.Length > MAX_NAME_LENGTH)
             {
-                return (null, $"Name should be less then {MAX_NAME_LENGHT} symbols");
+                return (null, $"Name should be less then {MAX_NAME_LENGTH} symbols");
             }
 
             return (new Issue(id, name, description, createDate), string.Empty);
