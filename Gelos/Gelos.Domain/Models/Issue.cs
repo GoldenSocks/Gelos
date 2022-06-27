@@ -41,6 +41,8 @@ namespace Gelos.Domain.Models
             return (new Issue(id, name, description, createDate), string.Empty);
         }
 
+
+
         // public List<СalcFile>? Files { get; set; }
     }
 }
