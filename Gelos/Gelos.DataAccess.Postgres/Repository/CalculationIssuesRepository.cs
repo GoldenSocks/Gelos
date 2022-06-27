@@ -1,4 +1,4 @@
-﻿using Gelos.DataAccess.Postgres.Entities;
+using Gelos.DataAccess.Postgres.Entities;
 using Gelos.Domain.Interfaces;
 using Gelos.Domain.Models;
 

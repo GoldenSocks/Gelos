@@ -1,5 +1,5 @@
 using Gelos.BusinessLogic.Services;
-using Gelos.DataAccess.Json;
+//using Gelos.DataAccess.Json;
 using Gelos.DataAccess.Postgres;
 using Gelos.DataAccess.Postgres.Repository;
 using Gelos.Domain.Interfaces;
@@ -14,8 +14,8 @@ builder.Services.AddControllers();
 builder.Services.AddScoped<ICalculationIssuesRepository, CalculationIssuesRepository>();
 builder.Services.AddScoped<ICalculationIssuesService, CalculationIssuesService>();
 
-builder.Services.AddSingleton<JsonContext>();
-builder.Services.AddSingleton(x => new JsonSettings("..\\Gelos.DataAccess.Json\\Data\\"));
+//builder.Services.AddSingleton<JsonContext>();
+//builder.Services.AddSingleton(x => new JsonSettings("..\\Gelos.DataAccess.Json\\Data\\"));
 
 builder.Services.AddDbContext<GelosContext>(options => 
 {

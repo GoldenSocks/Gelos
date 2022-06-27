@@ -3,7 +3,10 @@ namespace Gelos.Domain.Models
 {
     public class Employee
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
+
         public string Name { get; set; } = String.Empty;
+
+        public Role Role { get; set; }
     }
 }
