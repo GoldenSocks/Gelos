@@ -1,18 +1,19 @@
-﻿using Gelos.Domain.Models;
+﻿using CSharpFunctionalExtensions;
+using Gelos.Domain.Models;
 
 
 namespace Gelos.Domain.Interfaces
 {
     public interface ICalculationIssuesService
     {
-        public (bool, string) Create(string name, string? description);
+        public Task<Result> Create(string name, string? description);
 
-        public List<Issue> Get();
+        public Task<List<Issue>> Get();
 
-        public Issue? Get(int id);
+        public Task<Issue?> Get(long id);
 
-        public bool Delete(int id);
+        public Task Delete(long id);
 
-        public bool Update(int id);
+        public Task Update(long id);
     }
 }

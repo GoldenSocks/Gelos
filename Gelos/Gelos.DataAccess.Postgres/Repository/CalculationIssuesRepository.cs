@@ -1,7 +1,8 @@
+using CSharpFunctionalExtensions;
 using Gelos.DataAccess.Postgres.Entities;
 using Gelos.Domain.Interfaces;
 using Gelos.Domain.Models;
-
+using Microsoft.EntityFrameworkCore;
 
 namespace Gelos.DataAccess.Postgres.Repository
 {
@@ -14,7 +15,7 @@ namespace Gelos.DataAccess.Postgres.Repository
             _context = context;
         }
 
-        public void Add(Issue issue)
+        public async Task Add(Issue issue)
         {
             var issueDto = new IssueDto
             {
@@ -25,69 +26,66 @@ namespace Gelos.DataAccess.Postgres.Repository
             };
 
             _context.Add(issueDto);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
 
-        public bool Delete(int id)
+        public async Task Delete(long issueId)
         {
-            var issue = _context.Issues.FirstOrDefault(x => x.Id == id);
-            if(issue != null)
+            var issue = _context.Issues.FindAsync(issueId);
+            if (issue.IsCompletedSuccessfully)
             {
                 _context.Remove(issue);
-                _context.SaveChanges();
-                return true;
+                await _context.SaveChangesAsync();
             }
-            return false;
         }
 
-        public (Issue?, bool) Get(int id)
+        public async Task<Issue?> Get(long issueId)
         {
-            var issueDto = _context.Issues.FirstOrDefault(issue => issue.Id == id);
+            var issueDto = await _context.Issues.FirstOrDefaultAsync(issue => issue.Id == issueId);
             
             if( issueDto != null)
             {
-                var (issue, _) = Issue.Create(issueDto.Name, issueDto.Description, issueDto.CreateDate, issueDto.Id);
-                return (issue, true);
+                var issue = Issue.Create(issueDto.Name, issueDto.Description, issueDto.CreateDate);
+                return issue.Value;
             }
-            return (null, false);
+            return null;
         }
 
-        public List<Issue> Get()
+        public async Task<List<Issue>> Get()
         {
-            var issuesDto = _context.Issues.ToList();
+            var issuesDto = await _context.Issues.ToListAsync();
 
             var issues = new List<Issue>();
 
             foreach (var issueDto in issuesDto)
             {
-                var (issue, _) = Issue.Create(issueDto.Name, issueDto.Description, issueDto.CreateDate, issueDto.Id);
-                if(issue != null)
+                var issue = Issue.Create(issueDto.Name, issueDto.Description, issueDto.CreateDate);
+                if(issue.IsSuccess)
                 {
-                    issues.Add(issue);
+                    issues.Add(issue.Value);
                 }
             }
             return issues;
         }
 
-        public bool Update(int id)
+        public async Task<Result> Update(long issueId)
         {
-            var (issue, IsSuccess) = Get(id);
+            var issue = Get(issueId);
 
-            if (IsSuccess)
+            if (issue.IsCompletedSuccessfully)
             {
                 var issueDto = new IssueDto
                 {
-                    Name = issue.Name,
-                    Description = issue.Description,
-                    CreateDate = issue.CreateDate,
-                    EndDate = issue.EndDate
+                    Name = issue.Result.Name,
+                    Description = issue.Result.Description,
+                    CreateDate = issue.Result.CreateDate,
+                    EndDate = issue.Result.EndDate
                 };
 
                 _context.Update(issueDto);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
             }
-
-            return IsSuccess;
+            return Result.Success();
         }
     }
 }

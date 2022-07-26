@@ -1,4 +1,5 @@
-﻿using Gelos.Domain.Interfaces;
+﻿using CSharpFunctionalExtensions;
+using Gelos.Domain.Interfaces;
 using Gelos.Domain.Models;
 
 
@@ -13,39 +14,38 @@ namespace Gelos.BusinessLogic.Services
             _calculationIssuesRepository = calculationIssuesRepository;
         }
 
-        public (bool, string) Create(string name, string? description)
+        public async Task<Result> Create(string name, string? description)
         {
-            var (issue, error) = Issue.Create(name, description, DateTime.Now);
+            var issue = Issue.Create(name, description, DateTime.Now);
 
-            if (!string.IsNullOrEmpty(error) || issue == null)
+            if (issue.Value == null)
             {
-                return (false, error);
+                return issue;
             }
             
-            _calculationIssuesRepository.Add(issue);
-            return (true, String.Empty);
+            await _calculationIssuesRepository.Add(issue.Value);
+            return Result.Success();
         }
 
-        public List<Issue> Get()
+        public async Task<List<Issue>> Get()
         {
-            return _calculationIssuesRepository.Get();
+            return await _calculationIssuesRepository.Get();
         }
 
-        public Issue? Get(int id)
+        public async Task<Issue?> Get(long id)
         {
-            var (issue, IsSuccess) = _calculationIssuesRepository.Get(id);
-                       
-            return  IsSuccess ? issue : null;
+            var issue = await _calculationIssuesRepository.Get(id);
+            return  issue;
         }
 
-        public bool Delete(int id)
+        public async Task Delete(long id)
         {
-            return _calculationIssuesRepository.Delete(id);
+            await _calculationIssuesRepository.Delete(id);
         }
 
-        public bool Update(int id)
+        public async Task Update(long id)
         {
-            return _calculationIssuesRepository.Update(id);
+            await _calculationIssuesRepository.Update(id);
         }
     }
 }

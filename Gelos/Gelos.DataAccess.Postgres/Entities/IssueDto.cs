@@ -3,7 +3,7 @@ namespace Gelos.DataAccess.Postgres.Entities
 {
     public class IssueDto
     {
-        public int Id { get; init; }
+        public long Id { get; init; }
 
         public string Name { get; set; } = String.Empty;
 

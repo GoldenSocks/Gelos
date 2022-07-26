@@ -17,38 +17,36 @@ namespace Gelos.API.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(CreateCalculationIssueRequest request)
+        public async Task<IActionResult> Create(CreateCalculationIssueRequest request)
         {
-            var response = _calculationIssuesService.Create(request.Name, request.Description);
-            return Ok(response.Item2);
+            var response = await _calculationIssuesService.Create(request.Name, request.Description);
+            return Ok(response);
         }
 
         [HttpGet]
-        public IActionResult Get()
+        public async Task<IActionResult> Get()
         {
-            var response = _calculationIssuesService.Get();
+            var response = await _calculationIssuesService.Get();
             return Ok(response);
         }
 
-        [HttpGet("{calculationIssueId:int}")]
-        public IActionResult Get(int calculationIssueId)
+        [HttpGet("{calculationIssueId:long}")]
+        public async Task<IActionResult> Get(long calculationIssueId)
         {
-            var response = _calculationIssuesService.Get(calculationIssueId);
+            var response = await _calculationIssuesService.Get(calculationIssueId);
             return Ok(response);
         }
 
-        [HttpDelete("{calculationIssueId:int}")]
-        public IActionResult Delete(int calculationIssueId)
+        [HttpDelete("{calculationIssueId:long}")]
+        public async Task Delete(long calculationIssueId)
         {
-            var response = _calculationIssuesService.Delete(calculationIssueId);
-            return Ok(response);
+            await _calculationIssuesService.Delete(calculationIssueId);
         }
 
-        [HttpPut("{calculationIssueId:int}")]
-        public IActionResult Update(int calculationIssueId)
+        [HttpPut("{calculationIssueId:long}")]
+        public async Task Update(long calculationIssueId)
         {
-            var response = _calculationIssuesService.Update(calculationIssueId);
-            return Ok(response);
+            await _calculationIssuesService.Update(calculationIssueId);
         }
     }
 }
