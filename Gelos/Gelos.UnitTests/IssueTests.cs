@@ -56,10 +56,9 @@ namespace Gelos.UnitTests
             var createDate = DateTime.Now;
 
             // act
-            var (issue, error) = Issue.Create(name, description, createDate);
+            var issue = Issue.Create(name, description, createDate);
 
             // assert
-            Assert.Empty(error);
             Assert.NotNull(issue);
         }
 
@@ -78,11 +77,10 @@ namespace Gelos.UnitTests
             var createDate = DateTime.Now;
 
             // act
-            var (issue, error) = Issue.Create(name, description, createDate);
-            _outputHelper.WriteLine("\r\n\tErrore: " + error);
+            var issue = Issue.Create(name, description, createDate);
+            _outputHelper.WriteLine("\r\n\tErrore: " + issue.Value);
 
             // assert
-            Assert.NotEmpty(error);
             Assert.Null(issue);
         }
 
