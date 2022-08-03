@@ -45,8 +45,11 @@ namespace Gelos.DataAccess.Postgres.Repository
             
             if( issueDto != null)
             {
-                var issue = Issue.Create(issueDto.Name, issueDto.Description, issueDto.CreateDate);
-                return issue.Value;
+                var issue = Issue.Create(issueDto.Name, issueDto.Description, issueDto.CreateDate, issueDto.Id);
+                if (issue.IsSuccess)
+                {
+                    return issue.Value;
+                }
             }
             return null;
         }
@@ -59,7 +62,7 @@ namespace Gelos.DataAccess.Postgres.Repository
 
             foreach (var issueDto in issuesDto)
             {
-                var issue = Issue.Create(issueDto.Name, issueDto.Description, issueDto.CreateDate);
+                var issue = Issue.Create(issueDto.Name, issueDto.Description, issueDto.CreateDate, issueDto.Id);
                 if(issue.IsSuccess)
                 {
                     issues.Add(issue.Value);

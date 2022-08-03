@@ -7,7 +7,7 @@ namespace Gelos.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class CalculationIssuesController : Controller
+    public class CalculationIssuesController : BaseController
     {
         private readonly ICalculationIssuesService _calculationIssuesService;
 
@@ -20,7 +20,7 @@ namespace Gelos.API.Controllers
         public async Task<IActionResult> Create(CreateCalculationIssueRequest request)
         {
             var response = await _calculationIssuesService.Create(request.Name, request.Description);
-            return Ok(response);
+            return response.IsSuccess ? Ok() : Error(response.Error);
         }
 
         [HttpGet]

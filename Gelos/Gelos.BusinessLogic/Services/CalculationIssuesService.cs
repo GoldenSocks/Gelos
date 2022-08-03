@@ -17,14 +17,8 @@ namespace Gelos.BusinessLogic.Services
         public async Task<Result> Create(string name, string? description)
         {
             var issue = Issue.Create(name, description, DateTime.Now);
-
-            if (issue.Value == null)
-            {
-                return issue;
-            }
-            
             await _calculationIssuesRepository.Add(issue.Value);
-            return Result.Success();
+            return issue;
         }
 
         public async Task<List<Issue>> Get()
