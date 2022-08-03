@@ -19,8 +19,4 @@
     <ProjectReference Include="..\Gelos.DataAccess.Postgres\Gelos.DataAccess.Postgres.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
 </Project>

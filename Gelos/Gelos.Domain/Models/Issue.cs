@@ -7,28 +7,29 @@ namespace Gelos.Domain.Models
     {
         public const int MAX_NAME_LENGHT = 500;
 
-        private Issue(string name, string? description, DateTime createDate)
+        private Issue(long id, string name, string? description, DateTime createDate)
         {
+            Id = id;
             Name = name;
             Description = description;
             CreateDate = createDate;
         }
 
-        public long Id { get; init; }
+        public long Id { get; private set; }
 
-        public string Name { get; }
+        public string Name { get; private set; }
 
-        public string? Description { get; }
+        public string? Description { get; private set; }
 
-        public DateTime CreateDate { get; set; }
+        public DateTime CreateDate { get; private set; }
 
-        public DateTime EndDate { get; set; }
+        public DateTime EndDate { get; private set; }
 
-        public Employee? Provider { get; set; }
+        public Employee? Provider { get; private set; }
 
-        public Employee? Executor { get; set; }
+        public Employee? Executor { get; private set; }
 
-        public static Result<Issue> Create(string name, string? description, DateTime createDate)
+        public static Result<Issue> Create(string name, string? description, DateTime createDate, long id = -1)
         {
             if (string.IsNullOrWhiteSpace(name))
             {
@@ -39,7 +40,7 @@ namespace Gelos.Domain.Models
                 return Result.Failure<Issue>($"Name should be less then {MAX_NAME_LENGHT} symbols");
             }
 
-            return new Issue(name, description, createDate);
+            return new Issue(id, name, description, createDate);
         }
 
         // public List<СalcFile>? Files { get; set; }
