@@ -3,9 +3,9 @@ using Gelos.Domain.Models;
 
 namespace Gelos.DataAccess.Postgres.Entities
 {
-    public class EmployeeDto
+    public class EmployeeDto : BaseEntity
     {
-        public Guid Id { get; set; }
+        public new Guid Id { get; set; }
 
         public string Name { get; set; } = String.Empty;
 
