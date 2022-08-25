@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Gelos.BusinessLogic.Services
 {
-    internal class EmployeeService : BaseService<Employee>, IEmployeeService
+    public class EmployeeService : BaseService<Employee>, IEmployeeService
     {
         public EmployeeService(IRepository<Employee> repository) : base(repository)
         {
