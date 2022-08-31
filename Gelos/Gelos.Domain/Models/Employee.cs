@@ -5,21 +5,21 @@ namespace Gelos.Domain.Models
 {
     public class Employee
     {
-        private Employee(string name, Role role, Guid id)
+        private Employee(string name, Role role, long id)
         {
-            Id = id;
             Name = name;
             Role = role;
+            Id = id;
         }
 
-        public Guid Id { get; set; }      //зачем Guid? почему просто не целое число?
+        public long Id { get;}
 
         //[Required(AllowEmptyStrings = false, ErrorMessage = "Name cannot be null or empty")]  может атрибутами валидировать свойства?
         public string Name { get; set; } = String.Empty;
 
         public Role Role { get; set; }
 
-        public static Result<Employee> Create(string name, Role role, Guid id)
+        public static Result<Employee> Create(string name, Role role, long id = 0)
         {
             if (string.IsNullOrWhiteSpace(name))
                 return Result.Failure<Employee>("Name cannot be null or empty");

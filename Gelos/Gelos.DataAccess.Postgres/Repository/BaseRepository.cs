@@ -19,9 +19,9 @@ namespace Gelos.DataAccess.Postgres.Repository
             _context = context;
         }
 
-        public async Task AddAsync(TModel entity)
+        public async Task AddAsync(TModel model)
         {
-            var instance = CreateEntityInstance(entity);
+            var instance = CreateEntityInstance(model);
             await _context.AddAsync(instance);
             await _context.SaveChangesAsync();
         }
@@ -44,10 +44,10 @@ namespace Gelos.DataAccess.Postgres.Repository
 
             if (entity != null)
             {
-                var issue = CreateModel(entity);
-                if (issue.IsSuccess)
+                var model = CreateModel(entity);
+                if (model.IsSuccess)
                 {
-                    return issue.Value;
+                    return model.Value;
                 }
             }
             return null;

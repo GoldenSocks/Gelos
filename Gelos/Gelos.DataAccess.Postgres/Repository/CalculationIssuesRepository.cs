@@ -14,6 +14,7 @@ namespace Gelos.DataAccess.Postgres.Repository
         {
             var issueDto = new IssueDto
             {
+                Id = issue.Id,
                 Name = issue.Name,
                 Description = issue.Description,
                 CreateDate = issue.CreateDate,

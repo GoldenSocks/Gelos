@@ -17,7 +17,7 @@ namespace Gelos.BusinessLogic.Services
 
         public async Task<Result> Create(string name, Role role)
         {
-            var employee = Employee.Create(name, role, new Guid());
+            var employee = Employee.Create(name, role);
             if (employee.IsSuccess)
                 await _Repository.AddAsync(employee.Value);
             return employee;

@@ -14,7 +14,7 @@ namespace Gelos.Domain.Models
             CreateDate = createDate;
         }
 
-        public long Id { get; private set; }
+        public long Id { get;}
 
         public string Name { get; private set; }
 
@@ -28,7 +28,7 @@ namespace Gelos.Domain.Models
 
         public Employee? Executor { get; private set; }
 
-        public static Result<Issue> Create(string name, string? description, DateTime createDate, long id = -1)
+        public static Result<Issue> Create(string name, string? description, DateTime createDate, long id = 0)
         {
             if (string.IsNullOrWhiteSpace(name))
             {

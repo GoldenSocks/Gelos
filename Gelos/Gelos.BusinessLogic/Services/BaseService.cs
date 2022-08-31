@@ -23,8 +23,8 @@ namespace Gelos.BusinessLogic.Services
 
         public async Task<T?> Get(long id)
         {
-            var issue = await _Repository.GetAsync(id);
-            return issue;
+            var model = await _Repository.GetAsync(id);
+            return model;
         }
 
         public async Task Delete(long id)
