@@ -3,6 +3,7 @@ using Gelos.BusinessLogic.Services;
 using Gelos.DataAccess.Postgres;
 using Gelos.DataAccess.Postgres.Repository;
 using Gelos.Domain.Interfaces;
+using Gelos.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,8 +12,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 
 
-builder.Services.AddScoped<ICalculationIssuesRepository, CalculationIssuesRepository>();
+builder.Services.AddScoped<IRepository<Issue>, CalculationIssuesRepository>();
+builder.Services.AddScoped<IRepository<Employee>, EmployeeRepository>();
 builder.Services.AddScoped<ICalculationIssuesService, CalculationIssuesService>();
+builder.Services.AddScoped<IEmployeeService, EmployeeService>();
 
 //builder.Services.AddSingleton<JsonContext>();
 //builder.Services.AddSingleton(x => new JsonSettings("..\\Gelos.DataAccess.Json\\Data\\"));

@@ -11,8 +11,8 @@ namespace Gelos.DataAccess.Postgres
             AppContext.SetSwitch("Npgsql.DisableDateTimeInfinityConversions", true);
         }
 
-        public DbSet<EmployeeDto> Employees { get; set; }
+        public DbSet<EmployeeDto>? Employees { get; set; }
 
-        public DbSet<IssueDto> Issues { get; set; }
+        public DbSet<IssueDto>? Issues { get; set; }
     }
 }

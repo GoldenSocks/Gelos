@@ -1,9 +1,8 @@
 ﻿
 namespace Gelos.DataAccess.Postgres.Entities
 {
-    public class IssueDto
+    public class IssueDto : BaseEntity
     {
-        public long Id { get; init; }
 
         public string Name { get; set; } = String.Empty;
 
