@@ -1,7 +1,6 @@
-﻿using Gelos.Domain.Models;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace Gelos.API.Models
+namespace Gelos.API.Contracts
 {
     public class CreateEmployeeRequest
     {

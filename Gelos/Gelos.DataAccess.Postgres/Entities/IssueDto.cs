@@ -1,5 +1,4 @@
-﻿
-namespace Gelos.DataAccess.Postgres.Entities
+﻿namespace Gelos.DataAccess.Postgres.Entities
 {
     public class IssueDto : BaseEntity
     {

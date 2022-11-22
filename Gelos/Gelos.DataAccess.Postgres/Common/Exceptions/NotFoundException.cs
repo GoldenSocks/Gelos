@@ -1,5 +1,4 @@
-﻿
-namespace Gelos.DataAccess.Postgres.Common.Exceptions
+﻿namespace Gelos.DataAccess.Postgres.Common.Exceptions
 {
     public class NotFoundException : Exception
     {

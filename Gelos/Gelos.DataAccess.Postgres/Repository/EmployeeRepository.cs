@@ -2,11 +2,6 @@
 using Gelos.DataAccess.Postgres.Entities;
 using Gelos.Domain.Interfaces;
 using Gelos.Domain.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Gelos.DataAccess.Postgres.Repository
 {

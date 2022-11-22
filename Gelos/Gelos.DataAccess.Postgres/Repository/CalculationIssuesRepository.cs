@@ -2,7 +2,6 @@ using CSharpFunctionalExtensions;
 using Gelos.DataAccess.Postgres.Entities;
 using Gelos.Domain.Interfaces;
 using Gelos.Domain.Models;
-using Microsoft.EntityFrameworkCore;
 
 namespace Gelos.DataAccess.Postgres.Repository
 {

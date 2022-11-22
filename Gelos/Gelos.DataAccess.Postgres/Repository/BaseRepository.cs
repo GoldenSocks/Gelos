@@ -1,11 +1,6 @@
 ﻿using CSharpFunctionalExtensions;
 using Gelos.DataAccess.Postgres.Entities;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Gelos.DataAccess.Postgres.Repository
 {
@@ -14,7 +9,7 @@ namespace Gelos.DataAccess.Postgres.Repository
 
         protected readonly GelosContext _context;
 
-        public BaseRepository(GelosContext context)
+        protected BaseRepository(GelosContext context)
         {
             _context = context;
         }

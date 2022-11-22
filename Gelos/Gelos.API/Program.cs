@@ -1,6 +1,3 @@
-//using Gelos.DataAccess.Json;
-
-using Gelos.BusinessLogic.Services;
 using Gelos.DataAccess.Postgres;
 using Gelos.DataAccess.Postgres.Repository;
 using Gelos.Domain.Interfaces;
@@ -15,8 +12,6 @@ builder.Services.AddControllers();
 
 builder.Services.AddScoped<IRepository<Issue>, CalculationIssuesRepository>();
 builder.Services.AddScoped<IRepository<Employee>, EmployeeRepository>();
-builder.Services.AddScoped<ICalculationIssuesService, CalculationIssuesService>();
-builder.Services.AddScoped<IEmployeeService, EmployeeService>();
 
 builder.Services.AddDbContext<GelosContext>(options => 
 {
