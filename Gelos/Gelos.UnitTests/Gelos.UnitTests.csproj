@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Gelos.BusinessLogic\Gelos.BusinessLogic.csproj" />
+    <ProjectReference Include="..\Gelos.BuissnessLogic\Gelos.BuissnessLogic.csproj" />
   </ItemGroup>
 
 </Project>

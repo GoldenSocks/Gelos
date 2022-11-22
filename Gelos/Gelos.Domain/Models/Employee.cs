@@ -22,7 +22,9 @@ namespace Gelos.Domain.Models
         public static Result<Employee> Create(string name, Role role, long id = 0)
         {
             if (string.IsNullOrWhiteSpace(name))
-                return Result.Failure<Employee>("Name cannot be null or empty");
+            {
+                return CSharpFunctionalExtensions.Result.Failure<Employee>("Name cannot be null or empty");
+            }
 
             return new Employee(name, role, id);
         }

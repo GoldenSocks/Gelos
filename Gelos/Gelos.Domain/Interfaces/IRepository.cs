@@ -1,7 +1,3 @@
-using CSharpFunctionalExtensions;
-using Gelos.Domain.Models;
-
-
 namespace Gelos.Domain.Interfaces
 {
     public interface IRepository<T>
@@ -12,7 +8,7 @@ namespace Gelos.Domain.Interfaces
 
         Task AddAsync(T entity);
 
-        Task<Result> UpdateAsync(long id);
+        Task<CSharpFunctionalExtensions.Result> UpdateAsync(long id);
 
         Task DeleteAsync(long id);
     }

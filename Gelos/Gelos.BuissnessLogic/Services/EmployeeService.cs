@@ -1,11 +1,6 @@
 ﻿using CSharpFunctionalExtensions;
 using Gelos.Domain.Interfaces;
 using Gelos.Domain.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Gelos.BusinessLogic.Services
 {
@@ -19,7 +14,7 @@ namespace Gelos.BusinessLogic.Services
         {
             var employee = Employee.Create(name, role);
             if (employee.IsSuccess)
-                await _Repository.AddAsync(employee.Value);
+                await _repository.AddAsync(employee.Value);
             return employee;
         }
     }

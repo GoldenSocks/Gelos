@@ -2,7 +2,6 @@
 using Gelos.Domain.Interfaces;
 using Gelos.Domain.Models;
 
-
 namespace Gelos.BusinessLogic.Services
 {
     public class CalculationIssuesService : BaseService<Issue>, ICalculationIssuesService
@@ -15,7 +14,7 @@ namespace Gelos.BusinessLogic.Services
         {
             var issue = Issue.Create(name, description, DateTime.Now);
             if(issue.IsSuccess)
-                await _Repository.AddAsync(issue.Value);
+                await _repository.AddAsync(issue.Value);
             return issue;
         }
 

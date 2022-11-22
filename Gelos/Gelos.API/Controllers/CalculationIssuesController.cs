@@ -19,7 +19,7 @@ namespace Gelos.API.Controllers
         public async Task<IActionResult> Create(CreateCalculationIssueRequest request)
         {
             var response = await _service.Create(request.Name, request.Description);
-            return response.IsSuccess ? Ok() : Error(response.Error);
+            return FromResult(response);
         }
 
     }

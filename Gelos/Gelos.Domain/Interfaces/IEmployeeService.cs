@@ -1,15 +1,9 @@
-﻿using CSharpFunctionalExtensions;
-using Gelos.Domain.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Gelos.Domain.Models;
 
 namespace Gelos.Domain.Interfaces
 {
     public interface IEmployeeService : IService<Employee>
     {
-        public Task<Result> Create(string name, Role role);
+        public Task<CSharpFunctionalExtensions.Result> Create(string name, Role role);
     }
 }

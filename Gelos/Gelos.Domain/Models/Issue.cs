@@ -32,11 +32,12 @@ namespace Gelos.Domain.Models
         {
             if (string.IsNullOrWhiteSpace(name))
             {
-                return Result.Failure<Issue>("Name must have value");
+                return CSharpFunctionalExtensions.Result.Failure<Issue>("Name must have value");
             }
+            
             if (name.Length > MAX_NAME_LENGHT)
             {
-                return Result.Failure<Issue>($"Name should be less then {MAX_NAME_LENGHT} symbols");
+                return CSharpFunctionalExtensions.Result.Failure<Issue>($"Name should be less then {MAX_NAME_LENGHT} symbols");
             }
 
             return new Issue(id, name, description, createDate);
