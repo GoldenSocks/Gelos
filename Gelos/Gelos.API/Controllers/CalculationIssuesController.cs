@@ -1,26 +1,27 @@
-﻿using Gelos.API.Models;
-using Gelos.Domain.Interfaces;
-using Gelos.Domain.Models;
+﻿using Gelos.API.Contracts;
+using Gelos.BusinessLogic.Features.Employee;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
-
 
 namespace Gelos.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class CalculationIssuesController : BaseController<ICalculationIssuesService, Issue>
+    public class CalculationIssuesController : BaseController
     {
-
-        public CalculationIssuesController(ICalculationIssuesService calculationIssuesService) : base(calculationIssuesService)
-        {
-        }
-
+        public CalculationIssuesController(IMediator mediator) : base(mediator) { }
+        
         [HttpPost]
-        public async Task<IActionResult> Create(CreateCalculationIssueRequest request)
+        public async Task<IActionResult> CreateIssue([FromBody] CreateCalculationIssueRequest request, CancellationToken ct)
         {
-            var response = await _service.Create(request.Name, request.Description);
-            return response.IsSuccess ? Ok() : Error(response.Error);
+            var result = await _mediator.Send(new CreateIssueCommand
+            {
+                Name = request.Name,
+                Description = request.Description
+            }, ct);
+            
+            return result.IsSuccessfully ? 
+                Ok() : BadRequest(result.GetErrors());
         }
-
     }
 }

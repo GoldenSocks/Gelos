@@ -4,7 +4,7 @@ namespace Gelos.Domain.Models
 {
     public record Issue
     {
-        public const int MAX_NAME_LENGHT = 500;
+        internal const int MAX_NAME_LENGHT = 500;
 
         private Issue(long id, string name, string? description, DateTime createDate)
         {
@@ -28,18 +28,21 @@ namespace Gelos.Domain.Models
 
         public Employee? Executor { get; private set; }
 
-        public static Result<Issue> Create(string name, string? description, DateTime createDate, long id = 0)
+        public static Result<Issue> Create(string name, string? description, DateTime? createDate, long id = 0)
         {
             if (string.IsNullOrWhiteSpace(name))
             {
-                return Result.Failure<Issue>("Name must have value");
+                return CSharpFunctionalExtensions.Result.Failure<Issue>("Name must have value");
             }
+            
             if (name.Length > MAX_NAME_LENGHT)
             {
-                return Result.Failure<Issue>($"Name should be less then {MAX_NAME_LENGHT} symbols");
+                return CSharpFunctionalExtensions.Result.Failure<Issue>($"Name should be less then {MAX_NAME_LENGHT} symbols");
             }
 
-            return new Issue(id, name, description, createDate);
+            return createDate == null ? 
+                new Issue(id, name, description, DateTime.Now) : 
+                new Issue(id, name, description, (DateTime)createDate);
         }
 
         // public List<СalcFile>? Files { get; set; }

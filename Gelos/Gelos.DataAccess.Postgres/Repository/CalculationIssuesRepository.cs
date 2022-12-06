@@ -2,11 +2,10 @@ using CSharpFunctionalExtensions;
 using Gelos.DataAccess.Postgres.Entities;
 using Gelos.Domain.Interfaces;
 using Gelos.Domain.Models;
-using Microsoft.EntityFrameworkCore;
 
 namespace Gelos.DataAccess.Postgres.Repository
 {
-    public class CalculationIssuesRepository : BaseRepository<Issue, IssueDto>, IRepository<Issue>
+    public class CalculationIssuesRepository : BaseRepository<Issue, IssueDto>, ICalculationIssuesRepository
     {
         public CalculationIssuesRepository(GelosContext context) : base(context) { }
         

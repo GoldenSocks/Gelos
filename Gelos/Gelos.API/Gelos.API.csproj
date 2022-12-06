@@ -7,6 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MediatR" Version="11.1.0" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.5">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
@@ -15,7 +17,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Gelos.BusinessLogic\Gelos.BusinessLogic.csproj" />
+    <ProjectReference Include="..\Gelos.BuissnessLogic\Gelos.BuissnessLogic.csproj" />
+    <ProjectReference Include="..\Gelos.Service\Gelos.Service.csproj" />
     <ProjectReference Include="..\Gelos.DataAccess.Postgres\Gelos.DataAccess.Postgres.csproj" />
   </ItemGroup>
 

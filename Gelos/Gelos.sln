@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gelos.UnitTests", "Gelos.Un
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gelos.IntegrationTests", "Gelos.IntegrationTests\Gelos.IntegrationTests.csproj", "{D045CF53-3CDB-4954-BF91-8B2A260B5934}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gelos.BusinessLogic", "Gelos.BusinessLogic\Gelos.BusinessLogic.csproj", "{88D11B11-733A-4DEA-B954-34BA746DC493}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gelos.BuissnessLogic", "Gelos.BuissnessLogic\Gelos.BuissnessLogic.csproj", "{88D11B11-733A-4DEA-B954-34BA746DC493}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gelos.DataAccess.Postgres", "Gelos.DataAccess.Postgres\Gelos.DataAccess.Postgres.csproj", "{74BB281D-357B-46B6-B457-F983BB748E62}"
 EndProject

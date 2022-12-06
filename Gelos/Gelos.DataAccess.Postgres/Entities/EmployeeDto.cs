@@ -1,5 +1,4 @@
-﻿
-using Gelos.Domain.Models;
+﻿using Gelos.Domain.Models;
 
 namespace Gelos.DataAccess.Postgres.Entities
 {
