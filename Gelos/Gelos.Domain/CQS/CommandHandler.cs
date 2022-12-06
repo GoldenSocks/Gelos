@@ -16,7 +16,7 @@ public abstract class CommandHandler<TCommand>:
     protected Result.Result Successfully() => 
         Result.Result.Successfully();
     
-    protected Result.Result Error(IError error) => 
+    protected Result.Result Error(string error) => 
         Result.Result.Error(error);
         
     protected Result<TResult> Successfully<TResult>(TResult result) => 

@@ -5,7 +5,7 @@ using Gelos.Domain.Models;
 
 namespace Gelos.DataAccess.Postgres.Repository
 {
-    public class EmployeeRepository : BaseRepository<Employee, EmployeeDto>, IRepository<Employee>
+    public class EmployeeRepository : BaseRepository<Employee, EmployeeDto>
     {
         public EmployeeRepository(GelosContext context) : base(context) { }
 
@@ -18,10 +18,10 @@ namespace Gelos.DataAccess.Postgres.Repository
                 Role = model.Role
             };
         }
-
+        
         protected override Result<Employee> CreateModel(EmployeeDto entity)
         {
-           return Employee.Create(entity.Name, entity.Role, entity.Id); 
+            return Employee.Create(entity.Name, entity.Role, entity.Id); 
         }
     }
 }

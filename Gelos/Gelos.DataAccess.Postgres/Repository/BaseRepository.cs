@@ -1,15 +1,20 @@
 ﻿using CSharpFunctionalExtensions;
 using Gelos.DataAccess.Postgres.Entities;
+using Gelos.Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace Gelos.DataAccess.Postgres.Repository
 {
-    public abstract class BaseRepository<TModel, TEntity> where TEntity : BaseEntity where TModel : class
+    public abstract class BaseRepository<TModel, TEntity> : IRepository<TModel>
+        where TEntity : BaseEntity 
+        where TModel : class
     {
+        private readonly DbContext _context;
+        protected DbContext Context => _context;
+        protected abstract Result<TModel> CreateModel(TEntity entity);
+        protected abstract TEntity CreateEntityInstance(TModel model);
 
-        protected readonly GelosContext _context;
-
-        protected BaseRepository(GelosContext context)
+        protected BaseRepository(DbContext context)
         {
             _context = context;
         }
@@ -21,7 +26,6 @@ namespace Gelos.DataAccess.Postgres.Repository
             await _context.SaveChangesAsync();
         }
 
-
         public async Task DeleteAsync(long id)
         {
             var entity = _context.Set<TEntity>().FindAsync(id);
@@ -32,20 +36,18 @@ namespace Gelos.DataAccess.Postgres.Repository
             }
         }
 
-
         public async Task<TModel?> GetAsync(long id)
         {
             var entity = await _context.Set<TEntity>().FirstOrDefaultAsync(entity => entity.Id == id);
 
-            if (entity != null)
+            if (entity == null)
             {
-                var model = CreateModel(entity);
-                if (model.IsSuccess)
-                {
-                    return model.Value;
-                }
+                return null;
             }
-            return null;
+            var model = CreateModel(entity);
+            
+            return model.IsSuccess ? 
+                model.Value : null;
         }
 
         public async Task<List<TModel>> GetAllAsync()
@@ -69,22 +71,14 @@ namespace Gelos.DataAccess.Postgres.Repository
         {
             var model = GetAsync(id);
 
-            if (model.IsCompletedSuccessfully && model.Result is not null)
+            if (!model.IsCompletedSuccessfully || model.Result is null)
             {
-                _context.Update(CreateEntityInstance(model.Result));
-                await _context.SaveChangesAsync();
-                return Result.Success();
-            }
-
-            return Result.Failure("Id is not valid");
+                return Result.Failure("Id is not valid");
+            } 
+            
+            _context.Update(CreateEntityInstance(model.Result));
+            await _context.SaveChangesAsync();
+            return Result.Success();
         }
-
-        protected abstract Result<TModel> CreateModel(TEntity entity);
-        protected abstract TEntity CreateEntityInstance(TModel model);
-
-
-
-
-
     }
 }

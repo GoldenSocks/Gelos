@@ -17,6 +17,6 @@ public abstract class QueryHandler<TQuery, TResult>:
         Result<TResult>.Successfull(result);
     
     
-    protected Result<TResult> Error(IError error) =>
+    protected Result<TResult> Error(string error) =>
         Result<TResult>.Error(error);
 }

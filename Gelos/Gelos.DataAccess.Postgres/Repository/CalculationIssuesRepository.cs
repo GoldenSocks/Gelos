@@ -5,7 +5,7 @@ using Gelos.Domain.Models;
 
 namespace Gelos.DataAccess.Postgres.Repository
 {
-    public class CalculationIssuesRepository : BaseRepository<Issue, IssueDto>, IRepository<Issue>
+    public class CalculationIssuesRepository : BaseRepository<Issue, IssueDto>, ICalculationIssuesRepository
     {
         public CalculationIssuesRepository(GelosContext context) : base(context) { }
         

@@ -3,6 +3,6 @@ namespace Gelos.Domain.Result;
 public interface IResult
 {
     bool IsSuccessfully { get; }
-    void AddError(IError error);
-    IError[] GetErrors();
+    void AddError(string error);
+    string[] GetErrors();
 }

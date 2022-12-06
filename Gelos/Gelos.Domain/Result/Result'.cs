@@ -9,7 +9,7 @@ public class Result<TValue>: Result, IResult<TValue>
         Value = value;
     }
 
-    private Result(IError error)
+    private Result(string error)
     {
         AddError(error);
     }
@@ -19,7 +19,7 @@ public class Result<TValue>: Result, IResult<TValue>
         return new Result<TValue>(value);
     }
 
-    public new static Result<TValue> Error(IError error)
+    public new static Result<TValue> Error(string error)
     {
         return new Result<TValue>(error);
     }

@@ -2,7 +2,7 @@ namespace Gelos.Domain.Result;
 
 public class Result : IResult
 {
-    private readonly List<IError> _errors = new();
+    private readonly List<string> _errors = new();
 
     protected Result()
     {
@@ -10,7 +10,7 @@ public class Result : IResult
 
     public bool IsSuccessfully => _errors.Count < 1;
 
-    public void AddError(IError error)
+    public void AddError(string error)
     {
         if (error == null)
         {
@@ -19,11 +19,11 @@ public class Result : IResult
         _errors.Add(error);
     }
 
-    public IError[] GetErrors() => _errors.ToArray();
+    public string[] GetErrors() => _errors.ToArray();
 
     public static Result Successfully() => new();
     
-    public static Result Error(IError error)
+    public static Result Error(string error)
     {
         var result = new Result();
         result.AddError(error);
